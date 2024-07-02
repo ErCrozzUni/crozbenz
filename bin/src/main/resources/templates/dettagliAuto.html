@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Auto</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Include la navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container mt-5">
+        <div class="boxtitle">
+            Dettagli Auto
+        </div>
+        <div class="card mb-3" style="background-color: rgba(255, 255, 255, 0.1); border: none; border-radius: 15px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 20px;">
+            <div class="text-center">
+                <img th:if="${auto.immagine.startsWith('https')}" th:src="${auto.immagine}" class="img-fluid" alt="Immagine Auto" style="width: 50%; height: auto; border-radius: 15px;">
+                <img th:unless="${auto.immagine.startsWith('https')}" th:src="@{'/' + ${auto.immagine}}" class="img-fluid" alt="Immagine Auto" style="width: 50%; height: auto; border-radius: 15px;">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title" th:text="${auto.nome}" style="color: #ff990a; font-family: 'Roboto', sans-serif;">Nome Auto</h3>
+                <p class="card-text" style="color: #ffffff;"><strong>Descrizione: </strong><span th:text="${auto.descrizione}">Descrizione dell'auto...</span></p>
+                <p class="card-text" style="color: #ffffff;"><strong>Concessionario: </strong><a th:href="@{/dettagliConc/{id}(id=${auto.concessionario.id})}" th:text="${auto.concessionario.nome}" style="color: #ff990a;">Nome Concessionario</a></p>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 style="color: #ffffff;">Specifiche</h4>
+                        <ul style="list-style-type: none; padding: 30px;">
+                            <li th:each="specifica : ${auto.specifiche}" th:text="${specifica}" style="background: rgba(255, 255, 255, 0.2); margin: 5px 0; padding: 10px; border-radius: 5px; color: #ffffff;">Specifica</li>
+                        </ul>
+                        <p th:if="${#lists.isEmpty(auto.specifiche)}" style="color: #ffffff;">Nessuna specifica disponibile.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4 style="color: #ffffff;">Optional</h4>
+                        <ul style="list-style-type: none; padding: 30px;">
+                            <li th:each="optional : ${auto.optional}" th:text="${optional}" style="background: rgba(255, 255, 255, 0.2); margin: 5px 0; padding: 10px; border-radius: 5px; color: #ffffff;">Optional</li>
+                        </ul>
+                        <p th:if="${#lists.isEmpty(auto.optional)}" style="color: #ffffff;">Nessun optional disponibile.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Mio Sito</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Include la navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="boxtitle" style="margin-top: 0px;">
+        Modifica Concessionario
+    </div>
+    <!-- Content Section -->
+    <div class="container2 infoBox">
+        <form th:action="@{/admin/updateConcessionario}" th:object="${concessionario}" method="post"
+            enctype="multipart/form-data" class="login-form">
+            <input type="hidden" th:field="*{id}" />
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" th:field="*{nome}" required>
+            </div>
+            <div class="form-group">
+                <label for="amministratore">Amministratore</label>
+                <input type="text" class="form-control" id="amministratore" th:field="*{amministratore}" required>
+            </div>
+            <div class="form-group">
+                <label for="immagine">Nuova Immagine</label>
+                <input type="file" class="form-control" id="immagine" name="immagine">
+            </div>
+            <div class="form-group">
+                <label for="dataFondazione">Data di Fondazione</label>
+                <input type="date" class="form-control" id="dataFondazione" th:field="*{dataFondazione}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

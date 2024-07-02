@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Auto</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Include la navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="boxtitle">
+        Lista Auto
+    </div>
+	
+	
+	
+    <div class="container2">
+        <div th:each="auto : ${auto}" class="contairAuto">
+            <div class="flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <img th:src="@{${auto.immagine}}" alt="Immagine Auto" class="img-fluid">
+                    </div>
+                    <div class="flip-box-back">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${auto.nome}">Nome Auto</h5>
+                            <p class="card-text" th:text="${auto.descrizione}">Descrizione Auto</p>
+                            <a th:href="@{/dettagliAuto/{id}(id=${auto.id})}" class="btn btn-warning">Dettagli</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -73,13 +73,11 @@ public class ConcessionarioController {
 	public String updateConcessionario(@RequestParam("id") Long id,
 	                                   @RequestParam("nome") String nome,
 	                                   @RequestParam("amministratore") String amministratore,
-	                                   @RequestParam("dataFondazione") String dataFondazione,
 	                                   @RequestParam("immagine") MultipartFile immagine) {
 	    Concessionario existingConcessionario = concessionarioService.findById(id);
 	    if (existingConcessionario != null) {
 	        existingConcessionario.setNome(nome);
 	        existingConcessionario.setAmministratore(amministratore);
-	        existingConcessionario.setDataFondazione(LocalDate.parse(dataFondazione));
 
 	        // Gestisci l'immagine
 	        if (!immagine.isEmpty()) {

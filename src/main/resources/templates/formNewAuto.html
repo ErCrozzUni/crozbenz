@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -17,9 +17,11 @@
     <!-- Include la navbar -->
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <div class="mt-5 container princbox py-5 scroll-container">
-        <h2 class="text-center">Aggiungi Nuova Auto</h2>
-        <form action="/formNewAuto" method="post" enctype="multipart/form-data" class="form-container">
+    <div class="boxtitle">
+        Aggiungi Nuova Auto
+    </div>
+    <div class="container2 infoBox">
+        <form th:action="@{/formNewAuto}" method="post" enctype="multipart/form-data" class="form-container">
             <input type="hidden" id="referer" name="referer" th:value="${referer}">
             <div th:if="${concessionario != null}">
                 <input type="hidden" id="concessionario-id" name="concessionarioId" th:value="${concessionario.id}">
@@ -76,7 +78,7 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         let specificaIndex = 1;
         let optionalIndex = 1;

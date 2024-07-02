@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,37 +11,39 @@
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <!-- Include la navbar -->
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <div class="container mt">
-        <div class="boxtitle">
-            Dettagli Concessionario
+    <div class="boxtitle text-center">
+        Dettagli Concessionario
+    </div>
+    <div class="container2 d-flex align-items-center mb-2">
+        <div class="boxfotodet mr-4">
+            <img th:src="${concessionario.immagine}" alt="Immagine Concessionario" class="img-fluid">
         </div>
-        <div class="card mb-3" style="background-color: rgba(255, 255, 255, 0.1); border: none; border-radius: 15px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 20px;">
-            <div class="text-center">
-                <img th:if="${concessionario.immagine.startsWith('https')}" th:src="${concessionario.immagine}" class="img-fluid" alt="Immagine Concessionario" style="width: 50%; height: auto; border-radius: 15px;">
-                <img th:unless="${concessionario.immagine.startsWith('https')}" th:src="@{'/' + ${concessionario.immagine}}" class="img-fluid" alt="Immagine Concessionario" style="width: 50%; height: auto; border-radius: 15px;">
-            </div>
-            <div class="card-body">
-                <h3 class="card-title" th:text="${concessionario.nome}" style="color: #ff990a; font-family: 'Roboto', sans-serif;">Nome Concessionario</h3>
-                <p class="card-text" style="color: #ffffff;"><strong>Data di Fondazione: </strong><span th:text="${concessionario.dataFondazione}">01/01/2000</span></p>
-                <p class="card-text" style="color: #ffffff;"><strong>Proprietario: </strong><span th:text="${concessionario.amministratore}">Nome Amministratore</span></p>
-                <p class="card-text" style="color: #ffffff;"><strong>Email: </strong><span th:text="${concessionario.email}">email@concessionario.com</span></p>
-                <p class="card-text" style="color: #ffffff;"><strong>Descrizione: </strong><span th:text="${concessionario.descrizione}">Descrizione del concessionario...</span></p>
-            </div>
+        <div>
+            <h3 class="card-title" th:text="${concessionario.nome}" style="color: #ff990a; font-family: 'Roboto', sans-serif;">Nome Concessionario</h3>
+            <p class="card-text" style="color: #ffffff;"><strong>Descrizione: </strong><span th:text="${concessionario.descrizione}">Descrizione del concessionario...</span></p>
+            <p class="card-text" style="color: #ffffff;"><strong>Amministratore: </strong><span th:text="${concessionario.amministratore}">Nome Amministratore</span></p>
         </div>
+    </div>
 
-        <div class="boxtitle">
-            Lista Auto
+    <div class="boxtitle mt-0">
+        Lista Auto
+    </div>
+    <div class="container2">
+        <div th:if="${#lists.isEmpty(concessionario.auto)}" class="text-center mt-2">
+            <p style="color: #ffffff;">Non sono presenti auto per questo concessionario</p>
+            <i class="fas fa-frown" style="color: #ff990a; font-size: 2em;"></i>
         </div>
-        <div class="container2">
-            <div th:each="auto : ${concessionario.auto}" class="contairAuto">
+        <div th:unless="${#lists.isEmpty(concessionario.auto)}" class="dettagliScorrimento">
+            <div th:each="auto : ${concessionario.auto}" class="contairAutoDettaglio">
                 <div class="flip-box">
                     <div class="flip-box-inner">
                         <div class="flip-box-front">
-                            <img th:src="${auto.immagine}" alt="Immagine Auto" class="img-fluid">
+                            <img th:src="@{'/' + ${auto.immagine}}" alt="Immagine Auto" class="img-fluid">
                         </div>
                         <div class="flip-box-back">
                             <div class="card-body">
@@ -58,6 +61,7 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

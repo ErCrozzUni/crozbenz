@@ -41,9 +41,9 @@ public class AuthConfiguration {
             .csrf().disable()  // Disabilitare CSRF per testare
             .authorizeHttpRequests()
             .requestMatchers(HttpMethod.GET, "/", "/login", "/index", "/auto", "/concessionari", "/register", "/css/**", "/images/**","/static/uploads/**", "/uploads/**", "/favicon.ico", "/dettagliConc/**", "/dettagliAuto/**").permitAll()
-            .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
+            .requestMatchers(HttpMethod.POST, "/register", "/login","/static/uploads/cuochi/**", "/uploads/cuochi/**","/static/uploads/auto/**", "/uploads/auto/**").permitAll()
             .requestMatchers(HttpMethod.GET, "/admin/**","/static/uploads/**", "/uploads/**").hasAnyAuthority(ADMIN_ROLE)
-            .requestMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
+            .requestMatchers(HttpMethod.POST, "/admin/**","/static/uploads/**", "/uploads/**").hasAnyAuthority(ADMIN_ROLE)
             .anyRequest().authenticated()
             .and().formLogin()
             .loginPage("/login")

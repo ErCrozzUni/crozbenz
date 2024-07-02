@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrozBenz</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Include la navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="container-box">
+        <div class="flip-boxIndex">
+            <div class="flip-box-inner">
+                <div class="flip-box-front">
+                    <img src="images/sfondo/testo.jpg" alt="Sfondo Testo" class="img-fluid">
+                </div>
+                <div class="flip-box-back">
+                    <div class="button-content">
+                        <!-- Bottone per i concessionari -->
+                        <button class="nav-button princbutton" onclick="location.href='/concessionari'">
+                            <i class="fas fa-building"></i>
+                            <span>Concessionari</span>
+                        </button>
+                        <!-- Bottone per auto -->
+                        <button class="nav-button princbutton" onclick="location.href='/auto'">
+                            <i class="fas fa-car"></i>
+                            <span>Auto</span>
+                        </button>
+                        <!-- Bottone per eseguire l'accesso -->
+                        <button class="nav-button princbutton" onclick="location.href='/login'">
+                            <i class="fas fa-user"></i>
+                            <span>Login</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

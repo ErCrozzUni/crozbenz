@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Il Mio Sito</title>
+	<link rel="stylesheet" href="/css/style.css">
+	<!-- Bootstrap CSS -->
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- Include la navbar -->
+	<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+	<!-- Content Section -->
+	<div class="container princbox py-5">
+		<h1 class="text-center">Aggiungi Nuovo Concessionario</h1>
+		<form th:action="@{/admin/saveConcessionario}" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+				<label for="nome">Nome</label>
+				<input type="text" class="form-control" id="nome" name="nome" required>
+			</div>
+			<div class="form-group">
+				<label for="amministratore">Amministratore</label>
+				<input type="text" class="form-control" id="amministratore" name="amministratore" required>
+			</div>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" id="username" name="username" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label for="dataFondazione">Data di Fondazione</label>
+				<input type="date" class="form-control" id="dataFondazione" name="dataFondazione" required>
+			</div>
+			<div class="form-group">
+				<label for="descrizione">Descrizione</label>
+				<textarea class="form-control" id="descrizione" name="descrizione" rows="3" required></textarea>
+			</div>
+			<div class="form-group">
+				<label for="immagine">Immagine</label>
+				<input type="file" class="form-control-file" id="immagine" name="immagine" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Aggiungi Concessionario</button>
+		</form>
+	</div>
+
+	<!-- Bootstrap JS and dependencies -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

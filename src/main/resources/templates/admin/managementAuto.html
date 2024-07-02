@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
+
 <body>
     <!-- Include la navbar -->
     <div th:replace="~{fragments/navbar :: navbar}"></div>
@@ -24,7 +26,7 @@
             <div class="flip-box">
                 <div class="flip-box-inner">
                     <div class="flip-box-front">
-						<img th:src="@{${auto.immagine}}" alt="Immagine Auto" class="img-fluid">
+                        <img th:src="@{'/' + ${auto.immagine}}" alt="Immagine Auto" class="img-fluid">
                     </div>
                     <div class="flip-box-back">
                         <div class="card-body">
@@ -43,4 +45,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Il Mio Sito</title>
-	<link rel="stylesheet" href="/css/style.css">
 	<!-- Bootstrap CSS -->
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -15,9 +16,11 @@
 	<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 	<!-- Content Section -->
-	<div class="container princbox py-5">
-		<h1 class="text-center">Aggiungi Nuovo Concessionario</h1>
-		<form th:action="@{/admin/saveConcessionario}" method="post" enctype="multipart/form-data">
+	<div class="boxtitle">
+		Aggiungi Nuovo Concessionario
+	</div>
+	<div class="container2 infoBox">
+		<form th:action="@{/admin/saveConcessionario}" method="post" enctype="multipart/form-data" class="form-signin">
 			<div class="form-group">
 				<label for="nome">Nome</label>
 				<input type="text" class="form-control" id="nome" name="nome" required>
@@ -44,15 +47,15 @@
 			</div>
 			<div class="form-group">
 				<label for="immagine">Immagine</label>
-				<input type="file" class="form-control-file" id="immagine" name="immagine" required>
+				<input type="file" class="form-control" id="immagine" name="immagine" required>
 			</div>
-			<button type="submit" class="btn btn-primary">Aggiungi Concessionario</button>
+			<button type="submit" class="btn btn-primary mt-3">Aggiungi Concessionario</button>
 		</form>
 	</div>
 
 	<!-- Bootstrap JS and dependencies -->
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 

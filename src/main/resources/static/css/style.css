@@ -18,16 +18,20 @@ body {
 
 /*****************************CONTENITORE PRINCILAE UTILIZAATO NELL INDEX*********************************** */
 .container-box {
-    width: 700px; /* Imposta la larghezza */
-    height: 300px; /* Imposta l'altezza */
-    border-radius: 20px; /* Imposta il border-radius per ottenere angoli arrotondati */
-    background-color: rgba(248, 249, 250, 0); /* Imposta il background-color con trasparenza */
-    position: relative;
-    margin: 40px auto;
-    perspective: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	width: 700px;
+	/* Imposta la larghezza */
+	height: 300px;
+	/* Imposta l'altezza */
+	border-radius: 20px;
+	/* Imposta il border-radius per ottenere angoli arrotondati */
+	background-color: rgba(248, 249, 250, 0);
+	/* Imposta il background-color con trasparenza */
+	position: relative;
+	margin: 40px auto;
+	perspective: 1000px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .container-box:hover .flip-box-inner {
@@ -43,16 +47,24 @@ body {
 
 /*********************************************************CONTAINER PER SCOLLARE LA PAGINA E TENERE IL LAOUYT********************************************************/
 .container2 {
-    width: 1000px; /* Aumenta la larghezza */
-    height: 600px; /* Altezza fissa per mantenere le dimensioni uguali */
-    margin: 20px auto; /* Mantiene il margine verticale e orizzontale */
-    background-color: rgba(255, 255, 255, 0); /* Trasparente */
-    border-radius: 10px;
-    white-space: normal; /* Permette la rottura di riga */
-    display: flex;
-    flex-wrap: wrap; /* Permette il wrapping delle card */
-    justify-content: center; /* Centra le card */
-    align-items: flex-start; /* Allinea le card all'inizio del contenitore */
+	width: 1000px;
+	/* Aumenta la larghezza */
+	height: 600px;
+	/* Altezza fissa per mantenere le dimensioni uguali */
+	margin: 20px auto;
+	/* Mantiene il margine verticale e orizzontale */
+	background-color: rgba(255, 255, 255, 0);
+	/* Trasparente */
+	border-radius: 10px;
+	white-space: normal;
+	/* Permette la rottura di riga */
+	display: flex;
+	flex-wrap: wrap;
+	/* Permette il wrapping delle card */
+	justify-content: center;
+	/* Centra le card */
+	align-items: flex-start;
+	/* Allinea le card all'inizio del contenitore */
 }
 
 
@@ -152,19 +164,29 @@ body {
 
 /***************************************BOX SCORRIMENTO DIMENSIONE FISSA PRINCIPALE********************************************************************/
 .princboxScroll {
-    max-width: 800px;
-    margin: 10px auto; /* Riduce ulteriormente lo spazio verticale rispetto alla navbar */
-    background-color: rgba(255, 255, 255, 0); /* Trasparente */
-    border-radius: 10px;
-    overflow-y: auto; /* Scorrimento verticale */
-    white-space: normal; /* Permette la rottura di riga */
-    height: 600px; /* Altezza massima */
-    display: flex;
-    flex-wrap: wrap; /* Permette il wrapping delle card */
-    justify-content: center; /* Centra le card */
-    scrollbar-width: none; /* Nasconde la scrollbar su Firefox */
-    -ms-overflow-style: none; /* Nasconde la scrollbar su IE e Edge */
-    margin-top: 5px; /* Riduce la distanza dalla navbar */
+	max-width: 800px;
+	margin: 10px auto;
+	/* Riduce ulteriormente lo spazio verticale rispetto alla navbar */
+	background-color: rgba(255, 255, 255, 0);
+	/* Trasparente */
+	border-radius: 10px;
+	overflow-y: auto;
+	/* Scorrimento verticale */
+	white-space: normal;
+	/* Permette la rottura di riga */
+	height: 600px;
+	/* Altezza massima */
+	display: flex;
+	flex-wrap: wrap;
+	/* Permette il wrapping delle card */
+	justify-content: center;
+	/* Centra le card */
+	scrollbar-width: none;
+	/* Nasconde la scrollbar su Firefox */
+	-ms-overflow-style: none;
+	/* Nasconde la scrollbar su IE e Edge */
+	margin-top: 5px;
+	/* Riduce la distanza dalla navbar */
 }
 
 
@@ -230,9 +252,11 @@ body {
 	width: 100%;
 	height: 100%;
 	backface-visibility: hidden;
-    border-radius: 20px; /* Aggiungi il border-radius anche qui */
-    overflow: hidden; /* Assicura che il contenuto rispetti il border-radius */
-	
+	border-radius: 20px;
+	/* Aggiungi il border-radius anche qui */
+	overflow: hidden;
+	/* Assicura che il contenuto rispetti il border-radius */
+
 }
 
 .flip-box-front {
@@ -268,6 +292,7 @@ body {
 
 /**************************************************PER IL TITOLO***************************************************************/
 .boxtitle {
+	
     max-width: 800px;
     margin: 100px auto 1px auto; /* Aumenta lo spazio rispetto alla navbar */
     padding: 10px; /* Riduce l'altezza del box */
@@ -280,38 +305,57 @@ body {
     font-family: 'Roboto', sans-serif; /* Font per il titolo */
     color: #ff990a; /* Colore del testo più vivace */
     border: 2px solid #ff990a; /* Bordo dello stesso colore del testo */
+    position: relative; /* Fissa la posizione */
+    z-index: 10;
+}
+
+.content-container {
+    margin-top: 140px; /* Spazio superiore per evitare sovrapposizioni */
+    width: 100%;
 }
 
 /*********************************************************************************************************************/
 
 /**********************************************PER VISUALIZZARE I DATI DI REGISTRAZIONEO DI MODFICA***********************************************************************/
 .infoBox {
-    max-width: 600px;
-    max-height: 400px; /* Altezza massima ridotta per rendere il contenuto scrollabile */
-    margin: 20px auto; /* Centra il box */
-    padding: 20px;
-    background-color: rgb(52, 58, 64, 0.3); /* Sfondo leggermente opaco */
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Abilita lo scorrimento verticale */
-    scrollbar-width: none; /* Nasconde la scrollbar per Firefox */
+	max-width: 600px;
+	max-height: 400px;
+	/* Altezza massima ridotta per rendere il contenuto scrollabile */
+	margin: 20px auto;
+	/* Centra il box */
+	padding: 20px;
+	background-color: rgb(52, 58, 64, 0.3);
+	/* Sfondo leggermente opaco */
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	overflow-y: auto;
+	/* Abilita lo scorrimento verticale */
+	scrollbar-width: none;
+	/* Nasconde la scrollbar per Firefox */
 }
+
 .infoBox::-webkit-scrollbar {
-    width: 8px; /* Larghezza della scrollbar per Webkit (Chrome, Safari) */
+	width: 8px;
+	/* Larghezza della scrollbar per Webkit (Chrome, Safari) */
 }
 
 .infoBox::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Colore del track della scrollbar */
-    border-radius: 10px; /* Arrotonda gli angoli del track */
+	background: #f1f1f1;
+	/* Colore del track della scrollbar */
+	border-radius: 10px;
+	/* Arrotonda gli angoli del track */
 }
 
 .infoBox::-webkit-scrollbar-thumb {
-    background: #888; /* Colore del thumb della scrollbar */
-    border-radius: 10px; /* Arrotonda gli angoli del thumb */
+	background: #888;
+	/* Colore del thumb della scrollbar */
+	border-radius: 10px;
+	/* Arrotonda gli angoli del thumb */
 }
 
 .infoBox::-webkit-scrollbar-thumb:hover {
-    background: #555; /* Colore del thumb della scrollbar al passaggio del mouse */
+	background: #555;
+	/* Colore del thumb della scrollbar al passaggio del mouse */
 }
 
 /*********************************************************************************************************************/
@@ -319,45 +363,129 @@ body {
 /**********************************************PER VISUALIZZARE I DETTAGLI DI AUTO E CONCESSIONARI***********************************************************************/
 
 .details-sections {
-    display: flex;
-    justify-content: space-between;
-    gap: 50px; /* Aumenta lo spazio tra le sezioni "Specifiche" e "Optional" */
+	display: flex;
+	justify-content: space-between;
+	gap: 50px;
+	/* Aumenta lo spazio tra le sezioni "Specifiche" e "Optional" */
 }
 
 .details-sections ul {
-    list-style-type: none;
-    padding: 0;
+	list-style-type: none;
+	padding: 0;
 }
 
 .details-sections li {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    color: #fff;
+	display: inline-block;
+	background-color: rgba(255, 255, 255, 0.1);
+	padding: 10px;
+	margin: 5px;
+	border-radius: 5px;
+	color: #fff;
 }
 
 .concessionario-details {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 15px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 20px;
+	background-color: rgba(255, 255, 255, 0.1);
+	border: none;
+	border-radius: 15px;
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	padding: 20px;
 }
 
 .concessionario-img {
-    width: 50%;
-    height: auto;
-    border-radius: 15px;
+	width: 50%;
+	height: auto;
+	border-radius: 15px;
 }
 
 .concessionario-title {
-    color: #ff990a;
-    font-family: 'Roboto', sans-serif;
+	color: #ff990a;
+	font-family: 'Roboto', sans-serif;
 }
 
 .concessionario-info {
-    color: #ffffff;
+	color: #ffffff;
 }
+
+/*///////////////////////////////*/
+.boxfotodet {
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	border-radius: 50%;
+}
+/*******************************************/
+.dettagliScorrimento {
+    height: 200px; /* Altezza fissa per la box scorrevole, in base all'altezza delle immagini */
+    overflow-x: auto;
+    overflow-y: hidden; /* Disabilita lo scorrimento verticale */
+    background: rgba(255, 255, 255, 0); /* Sfondo trasparente */
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px; /* Spazio tra le colonne */
+    scroll-snap-type: x mandatory; /* Per uno scorrimento fluido */
+    direction: rtl; /* Scorrimento da destra verso sinistra */
+}
+
+.contairAutoDettaglio {
+    flex: 0 0 calc(33.333% - 10px); /* Tre colonne per riga */
+    scroll-snap-align: start; /* Allinea gli elementi all'inizio */
+    direction: ltr; /* Ripristina la direzione normale per i contenuti all'interno */
+}
+/*******************************************/
+
+.contairAutoDettaglio {
+    flex: 0 0 calc(33.333% - 10px); /* Tre colonne per riga */
+    scroll-snap-align: start; /* Allinea gli elementi all'inizio */
+    direction: ltr; /* Ripristina la direzione normale per i contenuti all'interno */
+}
+
+.dettagliScorrimento {
+    height: 200px; /* Altezza fissa per la box scorrevole, in base all'altezza delle immagini */
+    overflow-x: auto;
+    overflow-y: hidden; /* Disabilita lo scorrimento verticale */
+    background: rgba(255, 255, 255, 0); /* Sfondo trasparente */
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px; /* Spazio tra le colonne */
+    scroll-snap-type: x mandatory; /* Per uno scorrimento fluido */
+    direction: rtl; /* Scorrimento da destra verso sinistra */
+}
+
+.contairAutoDettaglio {
+    flex: 0 0 calc(33.333% - 10px); /* Tre colonne per riga */
+    scroll-snap-align: start; /* Allinea gli elementi all'inizio */
+    direction: ltr; /* Ripristina la direzione normale per i contenuti all'interno */
+}
+
+.dettagliAutoScroll {
+    height: 200px; /* Altezza fissa per la box scorrevole */
+    overflow-x: auto;
+    overflow-y: hidden; /* Disabilita lo scorrimento verticale */
+    background: rgba(255, 255, 255, 0); /* Sfondo trasparente */
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 15px; /* Spazio tra le colonne */
+    scroll-snap-type: x mandatory; /* Per uno scorrimento fluido */
+    direction: ltr; /* Scorrimento da sinistra verso destra */
+}
+
+.boxSpecifiche, .boxOptional {
+    flex: 0 0 auto; /* Larghezza automatica per ogni item */
+    scroll-snap-align: start; /* Allinea gli elementi all'inizio */
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    color: #ffffff;
+    min-width: 150px; /* Larghezza minima per ogni box */
+}
+
+
+
+
