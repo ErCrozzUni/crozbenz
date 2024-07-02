@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Aggiungi Nuova Auto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Include la navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="mt-5 container princbox py-5 scroll-container">
+        <h2 class="text-center">Aggiungi Nuova Auto</h2>
+        <form action="/formNewAuto" method="post" enctype="multipart/form-data" class="form-container">
+            <input type="hidden" id="referer" name="referer" th:value="${referer}">
+            <div th:if="${concessionario != null}">
+                <input type="hidden" id="concessionario-id" name="concessionarioId" th:value="${concessionario.id}">
+            </div>
+            <div class="form-group">
+                <label for="nome">Nome Auto</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="immagine">Immagine</label>
+                <input type="file" class="form-control" id="immagine" name="immagine" required>
+            </div>
+            <div class="form-group">
+                <label for="descrizione">Descrizione</label>
+                <textarea class="form-control" id="descrizione" name="descrizione" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="concessionario">Concessionario</label>
+                <div th:if="${concessionario != null}">
+                    <input type="text" class="form-control" id="concessionario" name="concessionario" th:value="${concessionario.nome}" readonly>
+                </div>
+                <div th:if="${concessionario == null}">
+                    <select class="form-control" id="concessionario-select" name="concessionarioId" required>
+                        <option value="">Seleziona un Concessionario</option>
+                        <option th:each="concessionario : ${concessionari}" th:value="${concessionario.id}" th:text="${concessionario.nome}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <h3>Specifiche</h3>
+            <div id="specifiche-container">
+                <div class="form-group specifica">
+                    <input type="text" class="form-control specifica-nome" name="specifiche[0]" required>
+                    <button type="button" class="btn-remove" onclick="removeSpecifica(this)">x</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="addSpecifica()">Aggiungi Specifica</button>
+            <br><br>
+
+            <h3>Optional</h3>
+            <div id="optional-container">
+                <div class="form-group optional">
+                    <input type="text" class="form-control optional-nome" name="optional[0]" required>
+                    <button type="button" class="btn-remove" onclick="removeOptional(this)">x</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="addOptional()">Aggiungi Optional</button>
+            <br><br>
+
+            <button type="submit" class="btn btn-primary">Aggiungi Auto</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let specificaIndex = 1;
+        let optionalIndex = 1;
+
+        function addSpecifica() {
+            const container = document.getElementById('specifiche-container');
+            const newSpecifica = document.createElement('div');
+            newSpecifica.className = 'form-group specifica';
+            newSpecifica.innerHTML = `
+                <input type="text" class="form-control specifica-nome" name="specifiche[${specificaIndex}]" required>
+                <button type="button" class="btn-remove" onclick="removeSpecifica(this)">x</button>
+            `;
+            container.appendChild(newSpecifica);
+            specificaIndex++;
+        }
+
+        function removeSpecifica(button) {
+            const specificaDiv = button.parentElement;
+            specificaDiv.remove();
+        }
+
+        function addOptional() {
+            const container = document.getElementById('optional-container');
+            const newOptional = document.createElement('div');
+            newOptional.className = 'form-group optional';
+            newOptional.innerHTML = `
+                <input type="text" class="form-control optional-nome" name="optional[${optionalIndex}]" required>
+                <button type="button" class="btn-remove" onclick="removeOptional(this)">x</button>
+            `;
+            container.appendChild(newOptional);
+            optionalIndex++;
+        }
+
+        function removeOptional(button) {
+            const optionalDiv = button.parentElement;
+            optionalDiv.remove();
+        }
+    </script>
+</body>
+
+</html>

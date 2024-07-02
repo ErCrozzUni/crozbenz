@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dettagli Concessionario</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Include la navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container mt-5">
+        <h1 th:text="${concessionario.nome}">Nome Concessionario</h1>
+        <img th:src="@{/${concessionario.immagine}}" alt="Immagine Concessionario" class="img-fluid mb-3">
+        <p th:text="${concessionario.descrizione}">Descrizione Concessionario</p>
+        <p>Email: <span th:text="${concessionario.email}">Email Concessionario</span></p>
+        <p>Amministratore: <span th:text="${concessionario.amministratore}">Amministratore Concessionario</span></p>
+        <p>Data Fondazione: <span th:text="${concessionario.dataFondazione}">Data Fondazione</span></p>
+        <a href="/concessionari" class="btn btn-secondary">Torna alla lista</a>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

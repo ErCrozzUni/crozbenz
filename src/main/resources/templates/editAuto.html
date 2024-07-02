@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Modifica Auto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- Custom CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Include la navbar -->
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+    <div class="boxtitle">
+        Modifica Auto
+    </div>
+    <div class="container2 infoBox">
+        <form th:action="@{/editAuto}" th:object="${auto}" method="post" enctype="multipart/form-data" class="form-container">
+            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" name="referer" th:value="${referer}" />
+            <div class="form-group">
+                <label for="nome">Nome Auto</label>
+                <input type="text" class="form-control" id="nome" th:field="*{nome}">
+            </div>
+            <div class="form-group">
+                <label for="immagine">Nuova Immagine</label>
+                <input type="file" class="form-control" id="immagine" name="immagine">
+            </div>
+            <div class="form-group">
+                <label for="descrizione">Descrizione</label>
+                <textarea class="form-control" id="descrizione" th:field="*{descrizione}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="concessionario">Concessionario</label>
+                <input type="text" class="form-control" id="concessionario" th:value="${auto.concessionario.nome}" readonly>
+            </div>
+
+            <h3>Specifiche</h3>
+            <div id="specifiche-container">
+                <div class="form-group specifica" th:each="specifica, stat : *{specifiche}">
+                    <input type="text" class="form-control specifica-nome" th:field="*{specifiche[__${stat.index}__]}">
+                    <button type="button" class="btn-remove" onclick="removeSpecifica(this)">x</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="addSpecifica()">Aggiungi Specifica</button>
+            <br><br>
+
+            <h3>Optional</h3>
+            <div id="optional-container">
+                <div class="form-group optional" th:each="optional, stat : *{optional}">
+                    <input type="text" class="form-control optional-nome" th:field="*{optional[__${stat.index}__]}">
+                    <button type="button" class="btn-remove" onclick="removeOptional(this)">x</button>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" onclick="addOptional()">Aggiungi Optional</button>
+            <br><br>
+
+            <button type="submit" class="btn btn-primary">Salva Modifiche</button>
+        </form>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let specificaIndex = /*[[${#lists.size(auto.specifiche)}]]*/ 0;
+        let optionalIndex = /*[[${#lists.size(auto.optional)}]]*/ 0;
+
+        function removeSpecifica(button) {
+            const specificaDiv = button.parentElement;
+            specificaDiv.remove();
+        }
+
+        function addSpecifica() {
+            const container = document.getElementById('specifiche-container');
+            const newSpecifica = document.createElement('div');
+            newSpecifica.className = 'form-group specifica';
+            newSpecifica.innerHTML = `
+                <input type="text" class="form-control specifica-nome" name="specifiche[${specificaIndex}]">
+                <button type="button" class="btn-remove" onclick="removeSpecifica(this)">x</button>
+            `;
+            container.appendChild(newSpecifica);
+            specificaIndex++;
+        }
+
+        function removeOptional(button) {
+            const optionalDiv = button.parentElement;
+            optionalDiv.remove();
+        }
+
+        function addOptional() {
+            const container = document.getElementById('optional-container');
+            const newOptional = document.createElement('div');
+            newOptional.className = 'form-group optional';
+            newOptional.innerHTML = `
+                <input type="text" class="form-control optional-nome" name="optional[${optionalIndex}]">
+                <button type="button" class="btn-remove" onclick="removeOptional(this)">x</button>
+            `;
+            container.appendChild(newOptional);
+            optionalIndex++;
+        }
+    </script>
+</body>
+</html>
