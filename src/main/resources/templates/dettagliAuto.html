@@ -31,16 +31,16 @@
         <div class="dettagliAutoScroll ml-4">
             <div>
                 <h4 style="color: #ffffff;">Specifiche</h4>
-                <ul style="list-style-type: none; padding: 0;">
-                    <li th:each="specifica : ${auto.specifiche}" th:text="${specifica}" class="boxSpecifiche">Specifica</li>
-                </ul>
+                <div class="scroll-container">
+                    <div th:each="specifica : ${auto.specifiche}" th:text="${specifica}" class="boxSpecifiche">Specifica</div>
+                </div>
                 <p th:if="${#lists.isEmpty(auto.specifiche)}" style="color: #ffffff;">Nessuna specifica disponibile.</p>
             </div>
             <div>
                 <h4 style="color: #ffffff;">Optional</h4>
-                <ul style="list-style-type: none; padding: 0;">
-                    <li th:each="optional : ${auto.optional}" th:text="${optional}" class="boxOptional">Optional</li>
-                </ul>
+                <div class="scroll-container">
+                    <div th:each="optional : ${auto.optional}" th:text="${optional}" class="boxOptional">Optional</div>
+                </div>
                 <p th:if="${#lists.isEmpty(auto.optional)}" style="color: #ffffff;">Nessun optional disponibile.</p>
             </div>
         </div>
@@ -51,7 +51,7 @@
     </div>
     <div class="container2">
         <div th:unless="${#lists.isEmpty(auto.concessionario.auto)}" class="dettagliScorrimento">
-            <div th:each="altraAuto : ${auto.concessionario.auto}" class="contairAutoDettaglio">
+            <div th:each="altraAuto : ${auto.concessionario.auto}" th:if="${altraAuto.id != auto.id}" class="contairAutoDettaglio">
                 <div class="flip-box">
                     <div class="flip-box-inner">
                         <div class="flip-box-front">
@@ -68,7 +68,7 @@
                 </div>
             </div>
         </div>
-        <div th:if="${#lists.isEmpty(altreAuto)}" class="text-center mt-2">
+        <div th:if="${#lists.isEmpty(auto.concessionario.auto) || auto.concessionario.auto.size() == 1}" class="text-center mt-2">
             <p style="color: #ffffff;">Non ci sono altre auto per questo concessionario</p>
             <i class="fas fa-frown" style="color: #ff990a; font-size: 2em;"></i>
         </div>
@@ -77,7 +77,7 @@
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrap.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -434,36 +434,12 @@ body {
     scroll-snap-align: start; /* Allinea gli elementi all'inizio */
     direction: ltr; /* Ripristina la direzione normale per i contenuti all'interno */
 }
-/*******************************************/
+/**************************************************************************************/
 
-.contairAutoDettaglio {
-    flex: 0 0 calc(33.333% - 10px); /* Tre colonne per riga */
-    scroll-snap-align: start; /* Allinea gli elementi all'inizio */
-    direction: ltr; /* Ripristina la direzione normale per i contenuti all'interno */
-}
-
-.dettagliScorrimento {
-    height: 200px; /* Altezza fissa per la box scorrevole, in base all'altezza delle immagini */
-    overflow-x: auto;
-    overflow-y: hidden; /* Disabilita lo scorrimento verticale */
-    background: rgba(255, 255, 255, 0); /* Sfondo trasparente */
-    border-radius: 15px;
-    padding: 10px;
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 15px; /* Spazio tra le colonne */
-    scroll-snap-type: x mandatory; /* Per uno scorrimento fluido */
-    direction: rtl; /* Scorrimento da destra verso sinistra */
-}
-
-.contairAutoDettaglio {
-    flex: 0 0 calc(33.333% - 10px); /* Tre colonne per riga */
-    scroll-snap-align: start; /* Allinea gli elementi all'inizio */
-    direction: ltr; /* Ripristina la direzione normale per i contenuti all'interno */
-}
+/****************SCORRIMENTO ORIZZONTALE PER SPECIFICHE E OPTIONAL*********************/
 
 .dettagliAutoScroll {
-    height: 200px; /* Altezza fissa per la box scorrevole */
+    height: 220px; /* Altezza fissa per la box scorrevole */
     overflow-x: auto;
     overflow-y: hidden; /* Disabilita lo scorrimento verticale */
     background: rgba(255, 255, 255, 0); /* Sfondo trasparente */
@@ -474,6 +450,15 @@ body {
     gap: 15px; /* Spazio tra le colonne */
     scroll-snap-type: x mandatory; /* Per uno scorrimento fluido */
     direction: ltr; /* Scorrimento da sinistra verso destra */
+    flex-direction: column;
+}
+
+.scroll-container {
+    display: flex;
+    overflow-x: auto; /* Abilita lo scorrimento orizzontale */
+    padding: 10px 0;
+    gap: 10px; /* Spazio tra gli elementi */
+    scroll-snap-type: x mandatory; /* Per uno scorrimento fluido */
 }
 
 .boxSpecifiche, .boxOptional {
@@ -481,11 +466,9 @@ body {
     scroll-snap-align: start; /* Allinea gli elementi all'inizio */
     background: rgba(255, 255, 255, 0.2);
     padding: 10px;
+    text-align: center;
     border-radius: 5px;
+    white-space: nowrap; /* Impedisce il ritorno a capo del testo */
     color: #ffffff;
     min-width: 150px; /* Larghezza minima per ogni box */
 }
-
-
-
-
