@@ -42,7 +42,6 @@ body {
 /*********************************************************************************************************************/
 
 /*********************************************************CONTAINER PER SCOLLARE LA PAGINA E TENERE IL LAOUYT********************************************************/
-
 .container2 {
     width: 1000px; /* Aumenta la larghezza */
     height: 600px; /* Altezza fissa per mantenere le dimensioni uguali */
@@ -109,7 +108,7 @@ body {
 
 /******************************************NAVBAR**********************************************************/
 .navbarprinc {
-	background-color: rgb(52, 58, 64, 0.3);
+	background-color: rgb(52, 58, 64, 0.6);
 	/* Dark background color */
 	border-bottom: 3px solid #ff990a;
 	/* Bottom border with accent color */
@@ -313,4 +312,52 @@ body {
 
 .infoBox::-webkit-scrollbar-thumb:hover {
     background: #555; /* Colore del thumb della scrollbar al passaggio del mouse */
+}
+
+/*********************************************************************************************************************/
+
+/**********************************************PER VISUALIZZARE I DETTAGLI DI AUTO E CONCESSIONARI***********************************************************************/
+
+.details-sections {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px; /* Aumenta lo spazio tra le sezioni "Specifiche" e "Optional" */
+}
+
+.details-sections ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.details-sections li {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.concessionario-details {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 20px;
+}
+
+.concessionario-img {
+    width: 50%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.concessionario-title {
+    color: #ff990a;
+    font-family: 'Roboto', sans-serif;
+}
+
+.concessionario-info {
+    color: #ffffff;
 }

@@ -14,18 +14,21 @@
     <!-- Include la navbar -->
     <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <div class="container mt-5">
+    <div class="container mt">
         <div class="boxtitle">
             Dettagli Concessionario
         </div>
-        <div class="card mb-3">
-            <img th:src="${concessionario.immagine}" class="card-img-top" alt="Immagine Concessionario">
+        <div class="card mb-3" style="background-color: rgba(255, 255, 255, 0.1); border: none; border-radius: 15px; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 20px;">
+            <div class="text-center">
+                <img th:if="${concessionario.immagine.startsWith('https')}" th:src="${concessionario.immagine}" class="img-fluid" alt="Immagine Concessionario" style="width: 50%; height: auto; border-radius: 15px;">
+                <img th:unless="${concessionario.immagine.startsWith('https')}" th:src="@{'/' + ${concessionario.immagine}}" class="img-fluid" alt="Immagine Concessionario" style="width: 50%; height: auto; border-radius: 15px;">
+            </div>
             <div class="card-body">
-                <h3 class="card-title" th:text="${concessionario.nome}">Nome Concessionario</h3>
-                <p class="card-text"><strong>Data di Fondazione: </strong><span th:text="${concessionario.dataFondazione}">01/01/2000</span></p>
-                <p class="card-text"><strong>Proprietario: </strong><span th:text="${concessionario.amministratore}">Nome Amministratore</span></p>
-                <p class="card-text"><strong>Email: </strong><span th:text="${concessionario.email}">email@concessionario.com</span></p>
-                <p class="card-text"><strong>Descrizione: </strong><span th:text="${concessionario.descrizione}">Descrizione del concessionario...</span></p>
+                <h3 class="card-title" th:text="${concessionario.nome}" style="color: #ff990a; font-family: 'Roboto', sans-serif;">Nome Concessionario</h3>
+                <p class="card-text" style="color: #ffffff;"><strong>Data di Fondazione: </strong><span th:text="${concessionario.dataFondazione}">01/01/2000</span></p>
+                <p class="card-text" style="color: #ffffff;"><strong>Proprietario: </strong><span th:text="${concessionario.amministratore}">Nome Amministratore</span></p>
+                <p class="card-text" style="color: #ffffff;"><strong>Email: </strong><span th:text="${concessionario.email}">email@concessionario.com</span></p>
+                <p class="card-text" style="color: #ffffff;"><strong>Descrizione: </strong><span th:text="${concessionario.descrizione}">Descrizione del concessionario...</span></p>
             </div>
         </div>
 
@@ -33,7 +36,7 @@
             Lista Auto
         </div>
         <div class="container2">
-            <div th:each="auto : ${auto}" class="contairAuto">
+            <div th:each="auto : ${concessionario.auto}" class="contairAuto">
                 <div class="flip-box">
                     <div class="flip-box-inner">
                         <div class="flip-box-front">

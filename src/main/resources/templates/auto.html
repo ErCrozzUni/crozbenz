@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,27 +10,27 @@
     <!-- Font Awesome CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 </head>
-
 <body>
     <!-- Include la navbar -->
     <div th:replace="~{fragments/navbar :: navbar}"></div>
     <div class="boxtitle">
         Lista Auto
     </div>
+	
+	
+	
     <div class="container2">
         <div th:each="auto : ${auto}" class="contairAuto">
             <div class="flip-box">
                 <div class="flip-box-inner">
                     <div class="flip-box-front">
-                        <img th:src="${auto.immagine}" alt="Immagine Auto" class="img-fluid">
+                        <img th:src="@{${auto.immagine}}" alt="Immagine Auto" class="img-fluid">
                     </div>
                     <div class="flip-box-back">
                         <div class="card-body">
                             <h5 class="card-title" th:text="${auto.nome}">Nome Auto</h5>
                             <p class="card-text" th:text="${auto.descrizione}">Descrizione Auto</p>
-                            <button class="nav-button princbutton" onclick="location.href='/auto/${auto.id}'">
-                                Dettagli
-                            </button>
+                            <a th:href="@{/dettagliAuto/{id}(id=${auto.id})}" class="btn btn-warning">Dettagli</a>
                         </div>
                     </div>
                 </div>

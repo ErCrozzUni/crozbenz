@@ -73,7 +73,7 @@ public class AutoController {
 	        }
 
 	        // Cancella l'immagine associata
-	        String immaginePath = "src/main/resources/static/" + auto.getImmagine();
+	        String immaginePath = "src/main/resources/static/uploads/auto/" + auto.getImmagine();
 	        File immagineFile = new File(immaginePath);
 	        if (immagineFile.exists()) {
 	            immagineFile.delete();
@@ -101,7 +101,7 @@ public class AutoController {
 	        }
 
 	        // Cancella l'immagine associata
-	        String immaginePath = "src/main/resources/static/" + auto.getImmagine();
+	        String immaginePath = "src/main/resources/static/uploads/auto/" + auto.getImmagine();
 	        File immagineFile = new File(immaginePath);
 	        if (immagineFile.exists()) {
 	            immagineFile.delete();
@@ -170,7 +170,8 @@ public class AutoController {
 		// Gestisci l'immagine
 		if (!immagine.isEmpty()) {
 			try {
-				String nuovoNomeImmagine = "images/auto/" + immagine.getOriginalFilename();
+				String nuovoNomeImmagine = "uploads/auto/" + immagine.getOriginalFilename();
+
 				File nuovoFileImmagineTemp = new File(System.getProperty("java.io.tmpdir") + "/" + nuovoNomeImmagine);
 
 				// Assicurati che la directory esista
@@ -259,7 +260,7 @@ public class AutoController {
 			}
 			// Salva la nuova immagine nella directory temporanea
 			try {
-				String nuovoNomeImmagine = "images/auto/" + immagine.getOriginalFilename();
+				String nuovoNomeImmagine = "uploads/auto/" + immagine.getOriginalFilename();
 				File nuovoFileImmagineTemp = new File(System.getProperty("java.io.tmpdir") + "/" + nuovoNomeImmagine);
 
 				// Assicurati che la directory esista

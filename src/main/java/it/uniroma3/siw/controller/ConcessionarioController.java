@@ -37,7 +37,7 @@ public class ConcessionarioController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	private static String UPLOAD_DIR = "src/main/resources/static/uploads/";
+	/*private static String UPLOAD_DIR = "src/main/resources/static/uploads/";*/
 
 	//****************************VIEW ALL***********************************************************
 	@GetMapping("/concessionari")
@@ -93,7 +93,7 @@ public class ConcessionarioController {
 	            }
 	            // Salva la nuova immagine nella directory temporanea
 	            try {
-	                String nuovoNomeImmagine = "src/main/resources/uploads/concessionari/" + immagine.getOriginalFilename();
+	                String nuovoNomeImmagine = "/uploads/concessionari/" + immagine.getOriginalFilename();
 	                File nuovoFileImmagineTemp = new File(System.getProperty("java.io.tmpdir") + "/" + nuovoNomeImmagine);
 
 	                // Assicurati che la directory esista
@@ -105,7 +105,7 @@ public class ConcessionarioController {
 	                immagine.transferTo(nuovoFileImmagineTemp);
 
 	                // Copia l'immagine nella directory static
-	                File nuovoFileImmagine = new File("src/main/resources/static/" + nuovoNomeImmagine);
+	                File nuovoFileImmagine = new File("src/main/resources/static" + nuovoNomeImmagine);
 	                File directory = nuovoFileImmagine.getParentFile();
 	                if (!directory.exists()) {
 	                    directory.mkdirs();
@@ -165,7 +165,7 @@ public class ConcessionarioController {
 		// Gestisci l'immagine
 		if (!immagine.isEmpty()) {
 			try {
-				String nuovoNomeImmagine = "src/main/resources/uploads/concessionari/" + immagine.getOriginalFilename();
+				String nuovoNomeImmagine = "/uploads/concessionari/" + immagine.getOriginalFilename();
 				File nuovoFileImmagineTemp = new File(System.getProperty("java.io.tmpdir") + "/" + nuovoNomeImmagine);
 
 				// Assicurati che la directory esista
@@ -177,7 +177,7 @@ public class ConcessionarioController {
 				immagine.transferTo(nuovoFileImmagineTemp);
 
 				// Copia l'immagine nella directory static
-				File nuovoFileImmagine = new File("src/main/resources/static/" + nuovoNomeImmagine);
+				File nuovoFileImmagine = new File("src/main/resources/static" + nuovoNomeImmagine);
 				File directory = nuovoFileImmagine.getParentFile();
 				if (!directory.exists()) {
 					directory.mkdirs();
@@ -228,10 +228,12 @@ public class ConcessionarioController {
 	        }
 
 	        // Cancella l'immagine associata
-	        String immaginePath = "src/main/resources/uploads/concessionari/" + concessionario.getImmagine();
-	        File immagineFile = new File(immaginePath);
-	        if (immagineFile.exists()) {
-	            immagineFile.delete();
+	        String vecchiaImmagine = concessionario.getImmagine();
+	        if (vecchiaImmagine != null && !vecchiaImmagine.isEmpty()) {
+	            File immagineFile = new File("src/main/resources/static" + vecchiaImmagine);
+	            if (immagineFile.exists()) {
+	                immagineFile.delete();
+	            }
 	        }
 
 	        // Elimina il concessionario
@@ -239,4 +241,5 @@ public class ConcessionarioController {
 	    }
 	    return "redirect:/admin/managementConcessionari"; // Reindirizza alla lista dei concessionari
 	}
+
 }

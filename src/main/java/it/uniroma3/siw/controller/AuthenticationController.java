@@ -85,7 +85,7 @@ public class AuthenticationController {
 		// Gestisci l'immagine
 		if (!immagine.isEmpty()) {
 			try {
-				String nuovoNomeImmagine = "/siw-food-concessionario/src/main/resources/uploads/concessionari" + immagine.getOriginalFilename();
+				String nuovoNomeImmagine = "src/main/resources/static/uploads/concessionari/" + immagine.getOriginalFilename();
 				File nuovoFileImmagineTemp = new File(System.getProperty("java.io.tmpdir") + "/" + nuovoNomeImmagine);
 
 				// Assicurati che la directory esista
@@ -97,7 +97,7 @@ public class AuthenticationController {
 				immagine.transferTo(nuovoFileImmagineTemp);
 
 				// Copia l'immagine nella directory static
-				File nuovoFileImmagine = new File("src/main/resources/static/" + nuovoNomeImmagine);
+				File nuovoFileImmagine = new File("src/main/resources/static/uploads/concessionari/" + immagine.getOriginalFilename());
 				File directory = nuovoFileImmagine.getParentFile();
 				if (!directory.exists()) {
 					directory.mkdirs();
@@ -115,7 +115,7 @@ public class AuthenticationController {
 		concessionario.setAmministratore(amministratore);
 		concessionario.setEmail(email);
 		concessionario.setDataFondazione(LocalDate.parse(dataFondazione));
-		concessionario.setImmagine("/images/concessionari/" + immagine.getOriginalFilename());
+		concessionario.setImmagine("uploads/concessionari/" + immagine.getOriginalFilename());
 		concessionario.setDescrizione(descrizione);
 
 		Credenziali credenziali = new Credenziali();
