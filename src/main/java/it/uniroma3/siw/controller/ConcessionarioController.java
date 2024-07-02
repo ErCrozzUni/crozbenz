@@ -43,15 +43,20 @@ public class ConcessionarioController {
 	@GetMapping("/concessionari")
 	public String showConcessionari(Model model) {
 		model.addAttribute("concessionari", concessionarioService.findAll());
-		return "concessionari"; // restituisce il nome della vista
+		return "concessionari"; //restituisce il nome della vista
+	}
+	
+	//****************************VIEW CONCESSIONARIO ID ***********************************************************
+	
+	@GetMapping("/dettagliConc/{id}")
+	public String getConcessionario(@PathVariable("id") Long id, Model model) {
+	    Concessionario concessionario = this.concessionarioService.findById(id);
+	    model.addAttribute("concessionario", concessionario);
+	    model.addAttribute("auto", concessionario.getAuto()); // Aggiungi la lista delle auto al modello
+	    return "dettagliConc"; // restituisce il nome della vista Thymeleaf
 	}
 
-	//****************************VIEW CONCESSIONARIO ID ***********************************************************
-	@GetMapping("/{id}")
-	public String getConcessionario(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("concessionario", this.concessionarioService.findById(id));
-		return "concessionario"; // restituisce il nome della vista
-	}
+
 
 	//****************************EDIT CONCESSIONARIO*************************************
 	@GetMapping("/editConcessionario")
@@ -234,8 +239,4 @@ public class ConcessionarioController {
 	    }
 	    return "redirect:/admin/managementConcessionari"; // Reindirizza alla lista dei concessionari
 	}
-
-
-
-
 }

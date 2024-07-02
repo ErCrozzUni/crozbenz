@@ -40,7 +40,7 @@ public class AuthConfiguration {
         httpSecurity
             .csrf().disable()  // Disabilitare CSRF per testare
             .authorizeHttpRequests()
-            .requestMatchers(HttpMethod.GET, "/", "/login", "/index", "/auto", "/concessionari", "/register", "/css/**", "/images/**","/uploads/**", "/favicon.ico").permitAll()
+            .requestMatchers(HttpMethod.GET, "/", "/login", "/index", "/auto", "/concessionari", "/register", "/css/**", "/images/**","/uploads/**", "/favicon.ico", "/dettagliConc/**", "/dettagliAuto/**").permitAll()
             .requestMatchers(HttpMethod.POST, "/register", "/login").permitAll()
             .requestMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
             .requestMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)

@@ -48,6 +48,15 @@ public class AutoController {
 		model.addAttribute("auto", autoService.findAll());
 		return "auto.html"; // restituisce il nome della vista
 	}
+	
+	//****************************VIEW ONE***********************************************************
+	@GetMapping("/dettagliAuto/{id}")
+	public String getAuto(@PathVariable("id") Long id, Model model) {
+	    Auto auto = this.autoService.findById(id); // Assicurati di avere un servizio AutoService per gestire le auto
+	    model.addAttribute("auto", auto);
+	    return "dettagliAuto"; // restituisce il nome della vista Thymeleaf
+	}
+
 
 	//****************************REMOVE AUTO FROM ADMIN***********************************************************
 	@Transactional

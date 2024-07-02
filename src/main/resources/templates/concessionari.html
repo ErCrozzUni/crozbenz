@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Il Mio Sito</title>
+	<title>Concessionari</title>
 	<link rel="stylesheet" href="/css/style.css">
 	<!-- Bootstrap CSS -->
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -29,9 +29,7 @@
 						<div class="card-body">
 							<h5 class="card-title" th:text="${concessionario.nome}">Nome Concessionario</h5>
 							<p class="card-text" th:text="${concessionario.descrizione}">Descrizione Concessionario</p>
-							<button class="nav-button princbutton" onclick="location.href='/test'">
-								Dettagli
-							</button>
+							 <a th:href="@{/dettagliConc/{id}(id=${concessionario.id})}" class="btn btn-warning">Dettagli</a>
 						</div>
 					</div>
 				</div>
